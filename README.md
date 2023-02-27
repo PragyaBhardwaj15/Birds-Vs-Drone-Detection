@@ -46,7 +46,7 @@ Neural networks and machine learning have been used for these tasks and have obt
 Machine learning algorithms have proven to be very useful in pattern recognition and classification, and hence can be used for Helmet detection as well.
 
 
-## Introduction
+## Literature Review
 
 ➢ Birds Vs Drone detection is crucial for safeguarding Birds  life. They detect the presence of Birds and Drones. 
 
@@ -112,13 +112,129 @@ It is a prototype of a new product that comprises of the main module:  Birds and
 ➢ YOLOv5 was used to train and test our model for various classes like Birds and Drones. We trained it for 149 epochs and achieved an better accuracy.
 
 
-## Birds  and Drones Dataset Training
 
-   We used Google Colab And Roboflow
-   train your model on colab and download the weights and pass them into yolov5 folder link of project
+# Setup
+
+# Installation
+
+Initial Setup
+
+Remove unwanted Applications.
+
+      sudo apt-get remove --purge libreoffice*
+      sudo apt-get remove --purge thunderbird*
 
 
+ Create Swap file
+      sudo fallocate -l 10.0G /swapfile1
+      sudo chmod 600 /swapfile1
+      sudo mkswap /swapfile1
+      sudo vim /etc/fstab
+      
+      #################add line###########
+      /swapfile1 swap swap defaults 0 0
 
+Cuda Configuration
+
+vim ~/.bashrc
+     
+     
+     #############add line #############
+     export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+     export
+     LD_LIBRARY_PATh=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+     export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1
+     
+     
+     source ~/.bashrc
+     
+     
+  Update & Upgrade
+
+        sudo apt-get update
+        sudo apt-get upgrade
+     
+  Install some required Packages
+
+        sudo apt install curl
+        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        sudo python3 get-pip.py
+        sudo apt-get install libopenblas-base libopenmpi-dev
+
+        sudo pip3 install pillow
+        
+ Install Torch
+
+         curl -LO https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl
+         mv p57jwntv436lfrd78inwl7iml6p13fzh.whl torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+         sudo pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+
+         #Check Torch, output should be "True" 
+         sudo python3 -c "import torch; print(torch.cuda.is_available())
+         
+   Installation of torchvision
+   
+          git clone --branch v0.9.1 https://github.com/pytorch/vision torchvision
+          cd torchvision/
+          sudo python3 setup.py install
+     
+  Clone Yolov5
+
+          git clone https://github.com/ultralytics/yolov5.git
+          cd yolov5/
+          sudo pip3 install numpy==1.19.4
+
+          #comment torch,PyYAML and torchvision in requirement.txt
+
+          sudo pip3 install --ignore-installed PyYAML>=5.3.1
+          sudo pip3 install -r requirements.txt
+          
+Download weights and Test Yolov5 Installation on USB webcam
+
+          sudo python3 detect.py
+          sudo python3 detect.py --weights yolov5s.pt  --source 0
+
+     
+   
+ # Birds And Drones Dataset Training
+ 
+# We used Google Colab And Roboflow
+
+train your model on colab and download the weights and past them into yolov5 folder link of project.
+
+
+# Running Birds And Drones  Detection Model
+
+source '0' for webcam
+
+!python detect.py --weights best.pt --img 416 --conf 0.1 --source 0
+
+
+## Advantages
+
+➢ Video-based Birds Drone- detection is currently a standard technology due to image processing, computer vision, and Artificial Intelligence. These systems have remarkable potential advantages over traditional methods, such as a fast response and wide detection areas.
+Drone detection has become an essential task in object detection as drone costs have decreased and drone technology has improved
+
+➢ Deep learning techniques have the advantage of extracting the features automatically, making this process more effective and dramatically improving the state-of-the-art in Image Classification and object detection methods
+
+➢ It can then convey to the person who present in control room if it needs to be completely automated
+
+➢ When completely automated no user input is required and therefore works with absolute efficiency and speed.
+
+## Application
+
+➢ Detects object class like Birds and Drones in a given image frame or view finder using a camera module.
+
+➢ Can be used in various places.
+
+➢ Can be used as a refrence for other ai models based on fire and smoke detection.
+
+
+## Refrences
+
+1] Roboflow :- https://roboflow.com/
+2] Datasets or images used:https://www.kaggle.com/datasets
+3] Google images
 
 
 
